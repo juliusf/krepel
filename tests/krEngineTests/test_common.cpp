@@ -133,17 +133,21 @@ TEST_CASE("ezContainer Extension", "[common]")
   */
 }
 
-TEST_CASE("Utils", "[common]")
+TEST_CASE("makePath", "[common]")
 {
   using namespace kr;
 
-  int data = 42;
-  auto pData = &data;
+  auto path = makePath("C:", "hello", "world");
+  REQUIRE(path == "C:/hello/world"); // Yes, on all systems.
+}
 
-  REQUIRE(pData != nullptr);
-  REQUIRE_FALSE(pData == nullptr);
+TEST_CASE("configPostfix", "[common]")
+{
+  ezStringView postfix{ kr::configPostfix() };
 
-  pData = nullptr;
-  REQUIRE_FALSE(pData != nullptr);
-  REQUIRE(pData == nullptr);
+#if EZ_ENABLED(EZ_COMPILE_FOR_DEBUG)
+  REQUIRE(postfix == "-debug");
+#else
+  REQUIRE(postfix.IsEmpty());
+#endif
 }

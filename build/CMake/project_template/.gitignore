@@ -1,0 +1,9 @@
+# Note: To check in binaries or libs, use `git add --force /bin/whatever.dll`.
+/bin/
+/lib/
+
+# This is the intended place to generate CMake stuff in, i.e. the CMake binary dir.
+/workspace/
+
+# Windows thumbnails.
+[tT]humbs.[dD][bB]

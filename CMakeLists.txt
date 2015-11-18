@@ -46,4 +46,6 @@ if(KREPEL_INSTALL_TARGETS_FILE)
           RENAME "krepel.cmake")
 endif()
 
-kr_post_config()
+include(kr_create_target_pullRuntimeBinaries)
+# Note: KREPEL_BINARY_PULL_PATH is created within kr_setup.
+kr_create_target_pullRuntimeBinaries("${KREPEL_DIR}/bin" ${KREPEL_BINARY_PULL_PATH})

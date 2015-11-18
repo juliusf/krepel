@@ -174,8 +174,13 @@ void kr::Renderer::extract()
   }
 }
 
-void kr::Renderer::update(ezTime dt, Borrowed<Window> pTarget)
+void kr::Renderer::update(Borrowed<Window> pTarget)
 {
+  clock()->Update();
+  auto dt = clock()->GetTimeDiff();
+  // So far, the delta time is not used in the renderer update.
+  EZ_IGNORE_UNUSED(dt);
+
   if (!pTarget)
   {
     ezLog::Warning(g_pLog, "Invalid target window.");
@@ -215,6 +220,19 @@ void kr::Renderer::update(ezTime dt, Borrowed<Window> pTarget)
   {
     ezLog::Warning(g_pLog, "Failed to present frame.");
   }
+}
+
+static ezClock createRendererClock()
+{
+  ezClock clock;
+  clock.SetClockName("RenderClock");
+  return clock;
+}
+
+ezClock* kr::Renderer::clock()
+{
+  static ezClock instance{ createRendererClock() };
+  return &instance;
 }
 
 void kr::Renderer::addExtractionListener(ExtractionEventListener listener)

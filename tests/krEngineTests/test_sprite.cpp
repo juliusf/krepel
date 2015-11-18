@@ -58,11 +58,10 @@ TEST_CASE("Workflow", "[sprite]")
     extract(e, sprite, t);
   });
 
-  ezTime dt;
   while(run)
   {
     processWindowMessages(pWindow);
     Renderer::extract();
-    Renderer::update(dt, pWindow);
+    Renderer::update(pWindow);
   }
 }
