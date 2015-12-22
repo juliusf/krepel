@@ -15,18 +15,7 @@ target_include_directories(krEngineTests PUBLIC ..)
 kr_set_pch(krEngineTests "pch.h")
 kr_mirror_source_tree("${CMAKE_CURRENT_LIST_DIR}" ${SOURCES})
 
-# Dependencies
-# ============
-
-find_package(OpenGL REQUIRED)
-if(OPENGL_INCLUDE_DIR)
-  # Needed on non-windows platforms (I think).
-  target_include_directories(krEngineTests PUBLIC ${OPENGL_INCLUDE_DIR})
-endif()
-
-target_link_libraries(krEngineTests
-                      krEngine
-                      ${OPENGL_LIBRARIES})
+target_link_libraries(krEngineTests krEngine)
 
 # Special Compile Options
 # =======================

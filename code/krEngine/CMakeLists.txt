@@ -7,7 +7,7 @@ file(GLOB_RECURSE SOURCES *.h *.inl *.cpp)
 
 # Target Setup
 # ============
-add_library(krEngine SHARED ${SOURCES})
+add_library(krEngine SHARED ${SOURCES} "${KREPEL_DIR}/ezEngine.natvis")
 set_target_properties(krEngine PROPERTIES
                       FOLDER engine
                       DEFINE_SYMBOL KR_ENGINE_DLL_EXPORT)
@@ -28,6 +28,8 @@ target_link_libraries(krEngine
                       glew
                       ezThirdParty ezFoundation ezCore ezCoreUtils ezSystem
                       ${OPENGL_LIBRARIES})
+
+target_compile_definitions(krEngine PRIVATE _KR_CONFIG_POSTFIX="$<TARGET_PROPERTY:krEngine,$<UPPER_CASE:$<CONFIG>>_POSTFIX>")
 
 # Install Target
 # ==============

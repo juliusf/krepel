@@ -123,13 +123,9 @@ TEST_CASE("Experiments", "[renderer][experiments]")
     //while(now < targetTime)
     while(run)
     {
-      auto dt = ezTime::Now() - now;
-
       processWindowMessages(pWindow);
       Renderer::extract();
-      Renderer::update(dt, pWindow);
-
-      now += dt;
+      Renderer::update(pWindow);
     }
   }
 }

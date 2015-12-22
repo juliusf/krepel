@@ -1,0 +1,27 @@
+#import LAB132_TOOLBOX_DIR
+
+#include "$LAB132_TOOLBOX_DIR$/buildscripts/MSVC14.bff"
+
+.VsBasePath = '$Vs14BasePath$'
+.WindowsSDKBasePath = "$Vs14BasePath$/../Windows Kits"
+.PlatformToolset = "v140"
+
+#include "$LAB132_TOOLBOX_DIR$/buildscripts/MSVCBaseConfig.bff"
+
+.RuntimeDependencies=
+{
+  "ezEngine-rev1196",
+  "glew-1.12.0"
+}
+
+CopyDir("PullRuntimeBinaries")
+{
+  .Dest="bin/"
+  .SourcePaths={}
+  .SourcePathsPattern={"*.dll","*.pdb"}
+  ForEach(.Dep in .RuntimeDependencies)
+  {
+    ^SourcePaths + "$LAB132_TOOLBOX_DIR$/$Dep$/bin/"
+  }
+
+}

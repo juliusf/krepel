@@ -1,0 +1,25 @@
+# EditorConfig settings file.
+# Check it out: http://editorconfig.org/
+# There is a plugin for visual studio, sublime text 2/3, notepad++, vim, and more
+
+# Editor config plugins will stop searching for any other .editorconfig file
+# if the following is set to true
+root = true
+
+# Use unix line endings for all files
+[*]
+# Unix style line endings (\\n)
+end_of_line = lf
+
+# Use 2 spaces for indentation
+indent_style = space
+indent_size = 2
+
+# At least 1 blank line at the end of the file
+insert_final_newline = true
+
+# Use UTF-8 as encoding
+charset = utf8
+
+# Remove annoying white space at the end of a line
+trim_trailing_whitespace = true

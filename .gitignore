@@ -35,5 +35,8 @@
 /bin/
 /lib/
 
+#Fastbuild
+*.fdb
+
 # This is the intended place to generate CMake stuff in, i.e. the CMake binary dir.
 /workspace/
